@@ -1,10 +1,15 @@
 from flask import Flask, request, jsonify, render_template
 from openai import OpenAI
 import time
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 app = Flask(__name__)
 ASSISTANT_ID = "asst_SizeRJtLIRnks53yEh8G6fU5"
-client = OpenAI(api_key = "assistant api key")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 @app.route('/chat', methods=['POST'])
 def chat():
